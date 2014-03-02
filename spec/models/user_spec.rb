@@ -42,7 +42,7 @@ describe User do
   	it "should be invalid" do
 		  addresses = %w[user@foo,com user_at_foo.org example.user@foo.
 		               foo@bar_baz.com foo@bar+baz.com]
-		  address.each do | invalid_address |
+		  addresses.each do | invalid_address |
 			 @user.email = invalid_address
 			 expect(@user).not_to be_valid
 	    end
@@ -62,7 +62,7 @@ describe User do
   describe "when email address is already taken" do
   	before do
   		user_with_same_email = @user.dup
-  		user_with_same_email = @user.email.upcase
+  		user_with_same_email.email = @user.email.upcase
   		user_with_same_email.save
   	end
 
