@@ -1,6 +1,4 @@
 module SessionsHelper
-<<<<<<< HEAD
-=======
 
 	def sign_in(user)
 		remember_token = User.new_remember_token
@@ -39,5 +37,4 @@ module SessionsHelper
 	def store_location
 		session[:return_to] = request.url
 	end
->>>>>>> updating-users
 end

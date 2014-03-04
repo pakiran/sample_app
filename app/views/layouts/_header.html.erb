@@ -1,18 +1,13 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-<<<<<<< HEAD
       <%= link_to "sample app", '#', id: "logo" %>
-=======
       <%= link_to "sample app", root_path, id: "logo" %>
->>>>>>> updating-users
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to "Home",  root_path %></li>
           <li><%= link_to "help",	help_path %></li>
-<<<<<<< HEAD
           <li><%= link_to "Sign in", '#' %></li>
-=======
           <% if signed_in? %>
             <li><%= link_to "Users", users_path %></li>
             <li id="fat-menu" class="dropdown">
@@ -31,7 +26,6 @@
           <% else %>
             <li><%= link_to "Sign in", signin_path %></li>
           <% end %> 
->>>>>>> updating-users
         </ul>
       </nav>
     </div>
