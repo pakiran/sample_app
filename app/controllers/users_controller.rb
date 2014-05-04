@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :signed_in_user, 
+	before_action :signed_in_user,
 	              only: [:index, :edit, :update, :destroy, :following, :followers]
 	before_action :correct_user,   only: [:edit, :update]
 	before_action :admin_user,     only: :destroy
@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 	def show
 	 @user = User.find(params[:id])
 	 @microposts = @user.microposts.paginate(page: params[:page])
+	 @comments = @microposts[1].comments
 	end
 
 	def new
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(user_params)	
+		@user = User.new(user_params)
 		if @user.save
 			sign_in @user
 			flash[:success] = "Welcome to the Sample App!"
