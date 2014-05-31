@@ -12,7 +12,28 @@
 			 																	 title: feed_item.content %>
       <% end %>
 	  </span>
-	  <span class="comment">
-	  	<%= render 'shared/comment_form', comment: Comment.new(micropost_id: feed_item.id, user_id: current_user.id) %>
-	  </span>
+	  <% if feed_item.comments.any? %>
+			<h5>Comments (<%= feed_item.comments.count %>)</h3>
+	  	<ol class="comments">
+				<% feed_item.comments.each do |comment| %>
+				  <li id="<%= comment.id %>">
+				    <span class="user">
+				      <%= link_to comment.user.name, comment.user %>
+				    </span>
+				    <span class="content"><%= comment.content %></span>
+				    <span class-"timestamp">
+				      Posted <%= time_ago_in_words(comment.created_at) %> ago.
+				      <% if current_user?(comment.user) %>
+				        <%= link_to "delete", feed_item, method: :delete,
+				                                         data: { confirm: "You sure?" },
+				                                         title: comment.content %>
+				      <% end %>
+				    </span>
+				  </li>
+				<% end %>
+	  	</ol>
+	  <% end %>
+	  <span>
+	  	<%= render partial: 'shared/comment_form', locals: {micropost_id: feed_item.id, user_id: current_user.id} %>
+    </span>
 </li>
