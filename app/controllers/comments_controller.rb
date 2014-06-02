@@ -13,6 +13,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment.destroy
+    redirect_to root_url
   end
 
   private
