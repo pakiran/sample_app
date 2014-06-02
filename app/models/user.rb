@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :microposts, dependent: :destroy
+	has_many :comments, dependent: :destroy
 	has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
 	has_many :reverse_relationships, foreign_key: "followed_id",
@@ -38,7 +39,7 @@ class User < ActiveRecord::Base
 	def unfollow!(other_user)
 		relationships.find_by(followed_id: other_user.id).destroy
 	end
-	
+
 	private
 
 		def create_remember_token

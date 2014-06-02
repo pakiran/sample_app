@@ -1,5 +1,6 @@
 class Micropost < ActiveRecord::Base
 	belongs_to :user
+	has_many :comments, dependent: :destroy
 	default_scope -> { order('created_at DESC') }
 	validates :content, presence: true, length: { maximum: 140 }
 	validates :user_id, presence: true
@@ -10,5 +11,9 @@ class Micropost < ActiveRecord::Base
 		                     WHERE follower_id = :user_id"
 		where("user_id IN (#{followed_user_ids}) OR user_id = :user_id",
 			    user_id: user.id)
+	end
+
+	def feed
+		Comment.where("micropost_id = ?", id)
 	end
 end
