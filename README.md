@@ -1,4 +1,5 @@
 GitHubの練習をします。
+Conflictの解消の仕方を学びます。
 
 == README
 
