@@ -1,3 +1,8 @@
+<<<<<<< Updated upstream
+=======
+git rebaseについて学ぶ。
+
+>>>>>>> Stashed changes
 == README
 
 # Ruby on Rails チュートリアル：サンプルアプリケーション
