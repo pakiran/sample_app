@@ -1,3 +1,5 @@
+GitHubの練習をします。
+
 == README
 
 # Ruby on Rails チュートリアル：サンプルアプリケーション
